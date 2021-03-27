@@ -1,0 +1,20 @@
+{
+  "name": "mock-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "serve": "node index.js"
+  },
+  "keywords": [
+    "eneba"
+  ],
+  "author": "Vytautas",
+  "license": "ISC",
+  "dependencies": {
+    "@graphql-modules/core": "^0.7.17",
+    "apollo-server": "^2.22.1",
+    "graphql": "^15.5.0"
+  }
+}
