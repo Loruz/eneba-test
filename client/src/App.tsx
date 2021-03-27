@@ -1,12 +1,15 @@
 import React from 'react';
-import './styles/App.css';
-import AppNavigation from './components/global/AppNavigation'
+import './assets/styles/App.css';
+import AppNavigation from './components/AppNavigation/AppNavigation'
+import AppFooter from './components/AppFooter/AppFooter'
+import ProjectPage from './components/ProjectPage/ProjectPage'
 
 function App() {
   return (
     <div className="">
       <AppNavigation/>
-      <a href={'tests'}>Test</a>
+        <ProjectPage/>
+      <AppFooter/>
     </div>
   );
 }

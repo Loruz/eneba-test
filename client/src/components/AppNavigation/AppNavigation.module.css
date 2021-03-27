@@ -1,0 +1,46 @@
+.header {
+    background-color: var(--primary-color);
+    background-image: url('../../assets/images/navigation-effect@2x.png');
+    background-repeat: no-repeat;
+    background-size: 550px 100%;
+}
+
+.logo {
+    margin: 25px 0;
+    max-width: 214px;
+}
+
+.innerWrap {
+    display: flex;
+    align-content: center;
+    justify-content: space-between;
+}
+
+.rightSide {
+    display: flex;
+    align-items: flex-end;
+}
+
+.linkList {
+    list-style: none;
+    display: flex;
+    margin: 0;
+    padding: 0;
+}
+
+.listItem {
+    padding: 16px 40px;
+}
+
+.link {
+    color: var(--white-color);
+    transition: color .3s;
+    text-decoration: none;
+    font-size: var(--navigation-link-font-size);
+    text-transform: uppercase;
+    font-weight: var(--font-bold);
+}
+
+.link:hover {
+    color: var(--yellow-hover-color);
+}

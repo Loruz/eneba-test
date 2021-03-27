@@ -1,0 +1,38 @@
+:root {
+    --primary-color: #4619AC;
+    --white-color: #fff;
+    --font-color: #000000;
+    --yellow-color: #FAD32F;
+    --yellow-hover-color: #F5A623;
+    --font-normal: 500;
+    --font-bold: 700;
+    --font-regular: 400;
+    --font-family: 'Roboto', sans-serif;
+
+    --navigation-link-font-size: 16px;
+    --title-font-size: 30px;
+    --subtitle-font-size: 20px;
+    --text-font-size: 14px;
+}
+
+body {
+    font-family: var(--font-family);
+    color: var(--font-color);
+    -webkit-font-smoothing: antialiased;
+}
+
+h1 {
+    font-size: var(--title-font-size);
+}
+
+h2 {
+    font-size: var(--subtitle-font-size);
+}
+
+.mainContainer {
+    width: 100%;
+    max-width: calc(1200px + 40px);
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
