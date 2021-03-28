@@ -1,6 +1,6 @@
-import React from 'react'
+import React, { FC } from 'react'
 
-function AppFooter () {
+const AppFooter: FC = () =>{
   return (
     <div className='mainContainer'>
       <div>Footer</div>

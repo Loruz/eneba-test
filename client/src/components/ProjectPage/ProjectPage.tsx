@@ -1,10 +1,14 @@
-import React from 'react'
+import React, { FC } from 'react'
+import ProjectCard from '../ProjectCard/ProjectCard'
+import ProjectSidebar from '../ProjectSidebar/ProjectSidebar'
+import styles from './ProjectPage.module.css'
 
-function ProjectPage () {
+const ProjectPage: FC = () => {
   return (
-    <div className='mainContainer'>
-      <div>Content</div>
-    </div>
+    <main className={styles.page}>
+     <ProjectCard/>
+     <ProjectSidebar/>
+    </main>
   )
 }
 

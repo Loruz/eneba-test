@@ -1,0 +1,52 @@
+.formItem {
+    display: block;
+    margin-bottom: 16px;
+}
+
+.formInput {
+    --input-border-color: #00000034;
+    --input-placeholder-color: #00000080;
+    --input-placeholder-font-size: 12px;
+    border-radius: 2px;
+    border: 1px solid var(--input-border-color);
+    padding: 6px 10px;
+    width: 100%;
+    resize: none;
+    outline: none;
+}
+
+.hasError {
+    border-color: var(--red-color);
+}
+
+.formTextArea {
+    height: 110px;
+}
+
+::-webkit-input-placeholder {
+    color: var(--input-placeholder-color);
+    font-size: var(--input-placeholder-font-size);
+}
+
+:-ms-input-placeholder {
+    color: var(--input-placeholder-color);
+    font-size: var(--input-placeholder-font-size);
+}
+
+::placeholder {
+    color: var(--input-placeholder-color);
+    font-size: var(--input-placeholder-font-size);
+}
+
+.label {
+    color: var(--font-color);
+    font-size: var(--text-font-size);
+    font-weight: var(--font-regular);
+    margin-bottom: 5px;
+}
+
+.error {
+    font-size: 12px;
+    color: var(--red-color);
+    margin-top: 3px;
+}

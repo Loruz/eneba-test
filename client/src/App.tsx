@@ -6,7 +6,7 @@ import ProjectPage from './components/ProjectPage/ProjectPage'
 
 function App() {
   return (
-    <div className="">
+    <div className="app">
       <AppNavigation/>
         <ProjectPage/>
       <AppFooter/>

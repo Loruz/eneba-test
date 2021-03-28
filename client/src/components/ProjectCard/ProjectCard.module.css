@@ -1,0 +1,16 @@
+.card {
+    background: var(--white-color);
+    box-shadow: var(--box-shadow);
+    border-radius: 2px;
+    padding: 16px 20px 30px;
+}
+
+.title {
+    font-size: var(--title-font-size);
+    margin-bottom: 28px;
+}
+
+.text {
+    font-size: var(--text-font-size);
+    line-height: 20px;
+}

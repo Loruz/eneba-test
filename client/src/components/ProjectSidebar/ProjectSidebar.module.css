@@ -1,0 +1,17 @@
+.sidebar {
+
+}
+
+.title {
+    font-size: var(--subtitle-font-size);
+    border-bottom: 1px solid var(--grey-color);
+    padding: 0 0 5px;
+    margin-bottom: 23px;
+}
+
+.message {
+    font-size: var(--text-font-size);
+    color: var(--font-color);
+    line-height: 20px;
+    margin-bottom: 30px;
+}
