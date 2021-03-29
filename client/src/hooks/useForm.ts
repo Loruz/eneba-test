@@ -17,7 +17,7 @@ const useForm = (callback: any, validate: any, initialValues: Values) => {
     if (Object.keys(errors).length === 0 && isSubmitting) {
       callback()
     }
-  })
+  }, [errors])
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
     e.preventDefault()
@@ -32,6 +32,8 @@ const useForm = (callback: any, validate: any, initialValues: Values) => {
   return {
     handleChange,
     handleSubmit,
+    isSubmitting,
+    setErrors,
     values,
     errors,
   }

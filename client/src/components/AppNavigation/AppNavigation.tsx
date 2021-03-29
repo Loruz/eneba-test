@@ -1,4 +1,4 @@
-import React, { FC, useEffect, useState } from 'react'
+import React, { FC } from 'react'
 import styles from './AppNavigation.module.css'
 import mainLogo from '../../assets/images/main-logo.svg'
 import { useQuery } from '@apollo/client'
@@ -10,21 +10,13 @@ interface NavigationLink {
 }
 
 const AppNavigation: FC = () => {
-  const { error, data } = useQuery(LOAD_NAVIGATION_LINKS)
-  const [links, setLinks] = useState<NavigationLink[]>([])
+  const { data, loading } = useQuery(LOAD_NAVIGATION_LINKS)
+  if (loading) return null
 
-  useEffect(() => {
-    if (error) {
-      return console.error('Error fetching navigation links')
-    }
-    if (data && data.links) {
-      let links = [...data.links]
-      let splicedLinks = [...links.splice(1, links.length)]
-      setLinks(splicedLinks)
-    }
-  }, [data])
+  let links = [...data.links]
+  let splicedLinks = [...links.splice(1, links.length)]
 
-  const navigationLinks = links.map((link: NavigationLink) => {
+  const navigationLinks = splicedLinks.map((link: NavigationLink) => {
     return (
       <li className={styles.listItem} key={link.title}>
         <a href={link.href} className={styles.link}>{link.title}</a>

@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect } from 'react'
+import React, { FC } from 'react'
 import { useQuery } from '@apollo/client'
 import styles from './AppFooter.module.css'
 import separator from '../../assets/images/footer-separator-img.png'
@@ -10,25 +10,15 @@ interface NavigationLink {
 }
 
 const AppFooter: FC = () => {
-  const { error, data } = useQuery(LOAD_NAVIGATION_LINKS)
-  const [links, setLinks] = useState<NavigationLink[]>([])
-  const [footerContent, setFooterContent] = useState<string>('')
+  const { data, loading } = useQuery(LOAD_NAVIGATION_LINKS)
 
-  useEffect(() => {
-    if (error) {
-      return console.error('Error fetching navigation links')
-    }
-    if (data) {
-      setFooterContent(data.footerContent)
-      setLinks(data.links)
-    }
-  }, [data])
+  if (loading) return null
 
-  const footerLinks = links.map((link: NavigationLink, index: number) => {
+  const footerLinks = data.links.map((link: NavigationLink, index: number) => {
     return (
       <li className={styles.listItem} key={index}>
         <a href={link.href} className={styles.link}>{link.title}</a>
-        {(index + 1 !== links.length) && <img src={separator} alt="separator" className={styles.separator}/>}
+        {(index + 1 !== data.links.length) && <img src={separator} alt="separator" className={styles.separator}/>}
       </li>)
   })
 
@@ -39,7 +29,7 @@ const AppFooter: FC = () => {
           {footerLinks.length && footerLinks}
         </ul>
         <div className={styles.text}>
-          {footerContent}
+          {data.footerContent}
         </div>
       </div>
     </div>

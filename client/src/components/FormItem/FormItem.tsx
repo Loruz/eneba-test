@@ -6,12 +6,13 @@ interface Props {
   label: string;
   value: string;
   name: string;
+  type?: string;
   placeholder?: string;
   onChange: (name: string, value: string) => void;
   errorMessage?: string;
 }
 
-const FormItem = ({ tag, label, value, name, placeholder, onChange, errorMessage }: Props) => {
+const FormItem = ({ tag, label, value, name, type, placeholder, onChange, errorMessage }: Props) => {
 
   function handleInput (e: ChangeEvent<HTMLInputElement>) {
     e.preventDefault()
@@ -35,6 +36,7 @@ const FormItem = ({ tag, label, value, name, placeholder, onChange, errorMessage
     <input
       className={innerClasses}
       name={name}
+      type={type}
       onChange={handleInput}
       value={value}
       placeholder={placeholder}/>)

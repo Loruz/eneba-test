@@ -11,9 +11,10 @@ interface Props {
     messages: [Message] | [],
     sidebarTitle: string;
   }
+  getNewMessages: () => void;
 }
 
-const ProjectSidebar = ({ sidebarData }: Props) => {
+const ProjectSidebar = ({ sidebarData, getNewMessages }: Props) => {
   const messageList = sidebarData.messages.map((message: Message, index: number) => {
     // Also dummy index
     return (<div className={styles.message} key={index}>
@@ -24,7 +25,7 @@ const ProjectSidebar = ({ sidebarData }: Props) => {
     <div className={styles.sidebar}>
       <h2 className={styles.title}>{sidebarData.sidebarTitle}</h2>
       {messageList}
-      <MessageForm/>
+      <MessageForm getNewMessages={getNewMessages}/>
     </div>
   )
 }

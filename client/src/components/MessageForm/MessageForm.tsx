@@ -1,20 +1,28 @@
-import React, { FC } from 'react'
+import React, { useState } from 'react'
 import styles from './MessageForm.module.css'
 import FormItem from '../FormItem/FormItem'
 import Button from '../Button/Button'
 import useForm from '../../hooks/useForm'
+import { useMutation } from '@apollo/client'
+import { SUBMIT_MESSAGE } from '../../graphql/mutations'
 
 interface Values {
   [key: string]: string
 }
 
-const MessageForm: FC = () => {
+interface Props {
+  getNewMessages: () => void
+}
+
+const MessageForm = ({ getNewMessages }: Props) => {
   let initialValues: Values = {
     first_name: '',
     last_name: '',
     message: ''
   }
-  let { values, errors, handleChange, handleSubmit } = useForm(sendMessage, validate, initialValues)
+  let { values, errors, handleChange, handleSubmit, setErrors } = useForm(sendMessage, validate, initialValues)
+  const [addMessage] = useMutation(SUBMIT_MESSAGE)
+  const [isSubmitted, setIsSubmitted] = useState<boolean>(false)
 
   function validate (values: Values) {
     let errors: any = {}
@@ -31,20 +39,35 @@ const MessageForm: FC = () => {
   }
 
   function sendMessage () {
-    console.log('sended')
+    addMessage({
+      variables: {
+        lastName: values.last_name,
+        firstName: values.first_name,
+        message: values.message
+      }
+    }).then(() => {
+      setIsSubmitted(true)
+      getNewMessages()
+    })
+      .catch((err) => {
+        // Validation errors from API
+        setErrors(err.graphQLErrors[0].extensions.errors)
+      })
   }
 
-  return (
+  return isSubmitted ? null : (
     <div className={styles.form}>
       <form action="#" onSubmit={handleSubmit}>
         <FormItem label='First name'
                   onChange={handleChange}
                   value={values.first_name}
+                  type={'text'}
                   errorMessage={errors.first_name}
                   name={'first_name'}
                   placeholder={'Your first name here'}/>
         <FormItem label='Last name'
                   onChange={handleChange}
+                  type={'text'}
                   value={values.last_name}
                   errorMessage={errors.last_name}
                   name={'last_name'}
