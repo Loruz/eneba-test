@@ -1,0 +1,14 @@
+.testimonials {
+    --violet-color: #E4E2F4;
+    background-color: var(--violet-color);
+    box-shadow: var(--box-shadow);
+    display: grid;
+    grid-column-gap: 40px;
+    grid-template-columns: repeat(3, 1fr);
+    padding: 20px;
+}
+
+.testimonial {
+    line-height: 19px;
+    font-size: var(--text-font-size);
+}
