@@ -5,11 +5,12 @@ interface Props {
   text?: string;
   classes: string[];
   children?: ReactNode
+  onClick?: any
 }
 
-const Button = ({ text, classes, children }: Props) => {
+const Button = ({ text, classes, children, onClick }: Props) => {
   let buttonClasses = [styles.button, ...classes].join(' ')
-  return (<button className={buttonClasses}>{children || text}</button>)
+  return (<button onClick={onClick} className={buttonClasses}>{children || text}</button>)
 }
 
 export default Button

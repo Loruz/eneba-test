@@ -21,3 +21,9 @@
 .submit:hover {
     background-color: var(--yellow-hover-color);
 }
+
+@media (max-width: 600px) {
+    .form {
+        padding: 10px;
+    }
+}

@@ -24,6 +24,7 @@
 .rightSide {
     display: flex;
     align-items: flex-end;
+    margin-left: auto;
 }
 
 .linkList {
@@ -102,5 +103,9 @@
 
     .burgerTrigger {
         display: flex;
+    }
+
+    .linkList {
+        flex-direction: column;
     }
 }

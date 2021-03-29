@@ -1,0 +1,36 @@
+.navigation {
+    min-width: 300px;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    right: 0;
+    left: auto;
+    top: 0;
+    height: 100%;
+    z-index: 20;
+    position: fixed;
+    display: none;
+}
+
+.backdrop {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.4);
+    display: none;
+}
+
+.closeButton {
+    width: 55px;
+    height: 55px;
+    padding: 15px;
+}
+
+@media (max-width: 725px) {
+    .navigation,
+    .backdrop {
+        display: block;
+    }
+
+}

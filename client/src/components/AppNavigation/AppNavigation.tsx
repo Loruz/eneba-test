@@ -1,9 +1,10 @@
-import React, { FC } from 'react'
+import React, { FC, useState } from 'react'
 import styles from './AppNavigation.module.css'
 import mainLogo from '../../assets/images/main-logo.svg'
 import { useQuery } from '@apollo/client'
 import { LOAD_NAVIGATION_LINKS } from '../../graphql/queries'
 import Button from '../Button/Button'
+import AppMobileNavigation from './AppMobileNavigation'
 
 interface NavigationLink {
   title: string;
@@ -12,6 +13,7 @@ interface NavigationLink {
 
 const AppNavigation: FC = () => {
   const { data, loading } = useQuery(LOAD_NAVIGATION_LINKS)
+  const [showSidebar, setShowSidebar] = useState<boolean>(false)
   if (loading) return null
 
   let links = [...data.links]
@@ -33,9 +35,15 @@ const AppNavigation: FC = () => {
             {navigationLinks}
           </ul>
         </div>
-        <Button classes={[styles.burgerTrigger]}>
+        <Button onClick={() => setShowSidebar(true)} classes={[styles.burgerTrigger]}>
           <span/>
         </Button>
+        {showSidebar && <AppMobileNavigation toggleSidebar={setShowSidebar}>
+          <ul className={styles.linkList}>
+            {navigationLinks}
+          </ul>
+        </AppMobileNavigation>}
+
       </div>
     </header>
   )
