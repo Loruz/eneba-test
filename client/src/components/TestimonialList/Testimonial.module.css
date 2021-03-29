@@ -13,3 +13,13 @@
     line-height: 19px;
     font-size: var(--text-font-size);
 }
+
+@media (max-width: 600px) {
+    .testimonials {
+        grid-template-columns: 1fr;
+        padding: 10px;
+    }
+    .testimonial {
+        margin-bottom: 20px;
+    }
+}

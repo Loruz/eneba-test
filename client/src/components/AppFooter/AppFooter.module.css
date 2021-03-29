@@ -48,3 +48,14 @@
 .link:hover {
     color: var(--yellow-hover-color);
 }
+
+@media (max-width: 600px) {
+    .linkList {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .listItem {
+        margin-bottom: 10px;
+    }
+}

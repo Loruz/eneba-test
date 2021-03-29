@@ -1,13 +1,19 @@
 import React, { FC } from 'react'
 import styles from './Testimonial.module.css'
+import { useQuery } from '@apollo/client'
+import { LOAD_TESIMONIALS } from '../../graphql/queries'
 
+interface Testimonial {
+  text: string;
+}
 const TestimonialList: FC = () => {
-  let testimonials = [1, 2, 3].map(t => {
+  const { data, loading } = useQuery(LOAD_TESIMONIALS)
+  if (loading) return null
+
+  let testimonials = data.testimonials.map((testimonial: Testimonial, index: number) => {
     return (
-      <div className={styles.testimonial} key={t}>
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-        dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-        clita kasd gubergren, no sea takimata sanctus.
+      <div className={styles.testimonial} key={index}>
+        {testimonial.text}
       </div>
     )
   })

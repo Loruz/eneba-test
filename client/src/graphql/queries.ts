@@ -21,3 +21,10 @@ export const LOAD_PROJECTS = gql`
         sidebarTitle
     }
 `
+export const LOAD_TESIMONIALS = gql`
+    query {
+        testimonials {
+            text
+        }
+    }
+`

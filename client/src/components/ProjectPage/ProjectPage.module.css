@@ -11,3 +11,11 @@
     grid-column-gap: 30px;
     margin-bottom: 50px;
 }
+
+@media (max-width: 768px) {
+    .page {
+        grid-template-columns: 1fr;
+        margin-bottom: 50px;
+    }
+}
+

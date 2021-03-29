@@ -3,6 +3,7 @@ import styles from './AppNavigation.module.css'
 import mainLogo from '../../assets/images/main-logo.svg'
 import { useQuery } from '@apollo/client'
 import { LOAD_NAVIGATION_LINKS } from '../../graphql/queries'
+import Button from '../Button/Button'
 
 interface NavigationLink {
   title: string;
@@ -32,6 +33,9 @@ const AppNavigation: FC = () => {
             {navigationLinks}
           </ul>
         </div>
+        <Button classes={[styles.burgerTrigger]}>
+          <span/>
+        </Button>
       </div>
     </header>
   )
