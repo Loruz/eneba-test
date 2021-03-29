@@ -5,7 +5,7 @@ import mainLogo from '../../assets/images/main-logo.svg'
 const AppNavigation: FC = () => {
   return (
     <header className={styles.header}>
-      <div className={styles.innerWrap}>
+      <div className={styles.innerContainer}>
         <img className={styles.logo} src={mainLogo} alt='Logo'/>
         <div className={styles.rightSide}>
           <ul className={styles.linkList}>

@@ -11,12 +11,12 @@
     max-width: 214px;
 }
 
-.innerWrap {
+.innerContainer {
     display: flex;
     align-content: center;
     justify-content: space-between;
     width: 100%;
-    max-width: calc(1106px + 40px);
+    max-width: calc(1146px + 40px);
     margin: 0 auto;
     padding: 0 20px;
 }
