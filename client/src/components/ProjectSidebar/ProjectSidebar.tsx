@@ -1,14 +1,29 @@
-import React, { FC } from 'react'
+import React from 'react'
 import styles from './ProjectSidebar.module.css'
 import MessageForm from '../MessageForm/MessageForm'
 
-const ProjectSidebar: FC = () => {
+interface Message {
+  text: string;
+}
+
+interface Props {
+  sidebarData: {
+    messages: [Message] | [],
+    sidebarTitle: string;
+  }
+}
+
+const ProjectSidebar = ({ sidebarData }: Props) => {
+  const messageList = sidebarData.messages.map((message: Message, index: number) => {
+    // Also dummy index
+    return (<div className={styles.message} key={index}>
+      {message.text}
+    </div>)
+  })
   return (
     <div className={styles.sidebar}>
-      <h2 className={styles.title}>Lorem ipsum dolor</h2>
-      <div className={styles.message}>
-        Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam.
-      </div>
+      <h2 className={styles.title}>{sidebarData.sidebarTitle}</h2>
+      {messageList}
       <MessageForm/>
     </div>
   )

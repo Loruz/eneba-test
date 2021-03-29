@@ -1,17 +1,30 @@
-import React from 'react';
-import './assets/styles/App.css';
+import React from 'react'
+import './assets/styles/App.css'
 import AppNavigation from './components/AppNavigation/AppNavigation'
 import AppFooter from './components/AppFooter/AppFooter'
 import ProjectPage from './components/ProjectPage/ProjectPage'
 
-function App() {
+import { ApolloClient, InMemoryCache, ApolloProvider, from, HttpLink } from '@apollo/client'
+
+const link = from([
+  new HttpLink({ uri: 'http://localhost:4000' })
+])
+
+const client = new ApolloClient({
+  cache: new InMemoryCache(),
+  link
+})
+
+function App () {
   return (
-    <div className="app">
-      <AppNavigation/>
+    <ApolloProvider client={client}>
+      <div className="app">
+        <AppNavigation/>
         <ProjectPage/>
-      <AppFooter/>
-    </div>
-  );
+        <AppFooter/>
+      </div>
+    </ApolloProvider>
+  )
 }
 
-export default App;
+export default App

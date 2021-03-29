@@ -13,6 +13,7 @@
 .text {
     --text-color: #FFFFFFBF;
     line-height: 20px;
+    font-size: var(--text-font-size);
     color: var(--text-color);
 }
 
@@ -30,7 +31,7 @@
     margin-right: 15px;
 }
 
-.linkIcon {
+.separator {
     margin-left: 19px;
     width: 9px;
     height: 9px;

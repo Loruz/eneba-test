@@ -13,4 +13,5 @@
 .text {
     font-size: var(--text-font-size);
     line-height: 20px;
+    margin-bottom: 20px;
 }

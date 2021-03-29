@@ -1,37 +1,45 @@
-import React, { FC } from 'react'
+import React, { FC, useState, useEffect } from 'react'
+import { useQuery } from '@apollo/client'
 import styles from './AppFooter.module.css'
-import linkIcon from '../../assets/images/footer-link-icon.png'
+import separator from '../../assets/images/footer-separator-img.png'
+import { LOAD_NAVIGATION_LINKS } from '../../graphql/queries'
+
+interface NavigationLink {
+  title: string;
+  href: string
+}
 
 const AppFooter: FC = () => {
+  const { error, data } = useQuery(LOAD_NAVIGATION_LINKS)
+  const [links, setLinks] = useState<NavigationLink[]>([])
+  const [footerContent, setFooterContent] = useState<string>('')
+
+  useEffect(() => {
+    if (error) {
+      return console.error('Error fetching navigation links')
+    }
+    if (data) {
+      setFooterContent(data.footerContent)
+      setLinks(data.links)
+    }
+  }, [data])
+
+  const footerLinks = links.map((link: NavigationLink, index: number) => {
+    return (
+      <li className={styles.listItem} key={index}>
+        <a href={link.href} className={styles.link}>{link.title}</a>
+        {(index + 1 !== links.length) && <img src={separator} alt="separator" className={styles.separator}/>}
+      </li>)
+  })
+
   return (
     <div className={styles.footer}>
       <div className={styles.innerContainer}>
         <ul className={styles.linkList}>
-          <li className={styles.listItem}>
-            <a href="/#" className={styles.link}>Home</a>
-            <img src={linkIcon} alt="linkIcon" className={styles.linkIcon}/>
-          </li>
-          <li className={styles.listItem}>
-            <a href="/#" className={styles.link}>Projects</a>
-            <img src={linkIcon} alt="linkIcon" className={styles.linkIcon}/>
-          </li>
-          <li className={styles.listItem}>
-            <a href="/#" className={styles.link}>About us</a>
-            <img src={linkIcon} alt="linkIcon" className={styles.linkIcon}/>
-          </li>
-          <li className={styles.listItem}>
-            <a href="/#" className={styles.link}>Testimonials</a>
-            <img src={linkIcon} alt="linkIcon" className={styles.linkIcon}/>
-          </li>
-          <li className={styles.listItem}>
-            <a href="/#" className={styles.link}>Contacts</a>
-            <img src={linkIcon} alt="linkIcon" className={styles.linkIcon}/>
-          </li>
+          {footerLinks.length && footerLinks}
         </ul>
         <div className={styles.text}>
-          Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et
-          dolore magna aliquyam erat, sed diam voluptua. At vero eos et accusam et justo duo dolores et ea rebum. Stet
-          clita kasd gubergren, no sea takimata sanctus est Lorem ipsum dolor sit amet. Lorem ipsum dolor sit.
+          {footerContent}
         </div>
       </div>
     </div>
