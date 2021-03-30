@@ -36,11 +36,16 @@
 
 .listItem {
     padding: 16px 40px;
+    position: relative;
+}
+
+.listItem:hover .dropdown {
+    visibility: visible;
 }
 
 .link {
     color: var(--white-color);
-    transition: color .3s;
+    transition: background-color .3s, color .3s;
     text-decoration: none;
     font-size: var(--navigation-link-font-size);
     text-transform: uppercase;
@@ -49,6 +54,33 @@
 
 .link:hover {
     color: var(--yellow-hover-color);
+    background-color: var(--primary-color);
+}
+
+.dropdown {
+    list-style: none;
+    position: absolute;
+    background: var(--primary-color);
+    top: 100%;
+    left: 0;
+    width: 100%;
+    padding: 0;
+    visibility: hidden;
+}
+
+.dropdownItem {
+    padding: 10px 30px;
+}
+
+.dropdownLink {
+    text-decoration: none;
+    transition: color .3s;
+    color: var(--white-color);
+}
+
+.dropdownLink:hover {
+    color: var(--yellow-hover-color);
+    background-color: var(--primary-color);
 }
 
 .burgerTrigger {

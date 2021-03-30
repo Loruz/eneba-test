@@ -4,7 +4,12 @@ export const LOAD_NAVIGATION_LINKS = gql`
     query {
         links {
             title,
-            href
+            href,
+            component
+            innerLinks {
+                title
+                href
+            }
         }
         footerContent
     }

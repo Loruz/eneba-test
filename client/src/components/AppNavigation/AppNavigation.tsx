@@ -8,7 +8,9 @@ import AppMobileNavigation from './AppMobileNavigation'
 
 interface NavigationLink {
   title: string;
-  href: string
+  href: string,
+  component: string;
+  innerLinks: [Partial<NavigationLink>]
 }
 
 const AppNavigation: FC = () => {
@@ -23,6 +25,19 @@ const AppNavigation: FC = () => {
     return (
       <li className={styles.listItem} key={link.title}>
         <a href={link.href} className={styles.link}>{link.title}</a>
+        {link.component === 'dropdown' &&
+        <ul className={styles.dropdown}>
+          {
+            link.innerLinks.map((innerLink: Partial<NavigationLink>) => {
+              return (
+                <li className={styles.dropdownItem}>
+                  <a href={innerLink.href} className={styles.dropdownLink}>{innerLink.title}
+                  </a>
+                </li>
+              )
+            })
+          }
+        </ul>}
       </li>
     )
   })

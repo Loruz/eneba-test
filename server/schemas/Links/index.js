@@ -10,7 +10,25 @@ const links = [
   {
     title: 'Projects',
     href: '#',
-    component: 'dropdown'
+    component: 'dropdown',
+    innerLinks: [
+      {
+        title: 'Link1',
+        href: '#'
+      },
+      {
+        title: 'Link2',
+        href: '#'
+      },
+      {
+        title: 'Link3',
+        href: '#'
+      },
+      {
+        title: 'Link4',
+        href: '#'
+      }
+    ]
   },
   {
     title: 'About us',
@@ -40,6 +58,16 @@ module.exports = new GraphQLModule({
           title: String!
           href: String!
           component: String
+          innerLinks: [InnerLink]
+      }
+      
+      type InnerLink {
+          title: String!
+          href: String!
+      }
+      
+      type Dropdown {
+          innerLinks: [InnerLink]
       }
   `,
   resolvers: {
